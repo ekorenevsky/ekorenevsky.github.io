@@ -198,7 +198,8 @@ For storage datapaths I think these are the right trade-offs. For a general-purp
 There is one more cost, and it's the one people ask about first: **the abstractions themselves aren't free.** `async`/`await`, futures and Rust's wrapper types add a thin layer of native code between SPDK and your logic. C callbacks get wrapped into futures, and every task passes through a run queue and a waker. To put a number on it, I benchmarked the ironspdk RAID5 example against SPDK's own C `raid5f` module, using memory-backed (malloc) child block devices:
 
 ```bash
-$ ./bench/bench-raid5.py --affinity 0x1,0x3,0xf --jobs 1,2,4 --rw randrw,randwrite --isa sse --time 120 --format table 2>/dev/null
+$ ./bench/bench-raid5.py --affinity 0x1,0x3,0xf --jobs 1,2,4 \
+    --rw randrw,randwrite --isa sse --time 120 --format table 2>/dev/null
 ┌────────────────┬─────┬──────────┬──────┬───────────┬──────┬─────────┬──────────┐
 │ implementation │ isa │ affinity │ jobs │ rw        │ time │ bw READ │ bw WRITE │
 ├────────────────┼─────┼──────────┼──────┼───────────┼──────┼─────────┼──────────┤
