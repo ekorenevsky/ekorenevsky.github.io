@@ -1,0 +1,39 @@
+# _config.yml
+title: red eyes / blue screens
+description: >-
+  a weblog
+author: ekorenevsky
+baseurl: ""
+url: "https://ekorenevsky.github.io"
+
+# Build settings
+markdown: kramdown
+theme: null # raw HTML/CSS, no theme needed
+permalink: /:year/:month/:day/:title:output_ext
+
+# Markdown processor settings
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+    span:
+      line_numbers: false
+    block:
+      line_numbers: false
+
+# GitHub Pages Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Exclude default theme files
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/

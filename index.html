@@ -1,0 +1,14 @@
+---
+layout: default
+title: Home
+---
+
+<hr>
+
+<ul style="list-style-type: none; padding: 0;">
+{% for post in site.posts %}
+    <li>
+        <strong>{{ post.date | date: "%Y-%m-%d" }}</strong> - <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    </li>
+{% endfor %}
+</ul>

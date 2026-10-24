@@ -1,0 +1,22 @@
+---
+layout: default
+---
+<article>
+  <h2>Posts tagged "{{ page.tag }}"</h2>
+
+  {% assign tagged_posts = site.tags[page.tag] %}
+  {% if tagged_posts.size > 0 %}
+    <ul>
+      {% for post in tagged_posts %}
+        <li>
+          <strong>{{ post.date | date: "%Y-%m-%d" }}</strong> - 
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No posts found with this tag.</p>
+  {% endif %}
+
+  <p><a href="{{ site.baseurl }}/tags/">&lt;&lt; Back to all tags</a></p>
+</article>
